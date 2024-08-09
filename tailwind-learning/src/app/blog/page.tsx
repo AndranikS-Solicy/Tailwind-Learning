@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const BlogPage: React.FC = () => {
   return (
     <div>
       <h1>BlogPage</h1>
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BlogPage;

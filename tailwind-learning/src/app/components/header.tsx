@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ImageComponent from "./image";
+import Button from "./button";
 
 const Header: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = (): void => setMenuOpen(!menuOpen);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       if (menuOpen) setMenuOpen(false);
     };
 
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
     };
   }, [menuOpen]);
 
-  const handleMenuItemClick = () => {
+  const handleMenuItemClick = (): void => {
     if (menuOpen) setMenuOpen(false);
   };
 
@@ -37,7 +38,7 @@ const Header: React.FC = () => {
           />
         </Link>
         <div className="block lg:hidden">
-          <button
+          <Button
             onClick={toggleMenu}
             className="text-warmGray focus:outline-none"
           >
@@ -55,7 +56,7 @@ const Header: React.FC = () => {
                 d="M4 6h16M4 12h16m-7 6h7"
               ></path>
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
       <div

@@ -4,17 +4,15 @@ import Card from "./components/card";
 export default function Home() {
   return (
     <main className="p-10 flex flex-wrap justify-center gap-20">
-      {cardInfo.map((card) => {
-        return (
-          <Card
-            key={card.id}
-            src={card.src}
-            title={card.title}
-            price={card.price}
-            description={card.description}
-          />
-        );
-      })}
+      {cardInfo.map((card) => (
+        <Card
+          key={card.id}
+          src={card.src}
+          title={card.title}
+          price={card.price}
+          description={card.description}
+        />
+      ))}
     </main>
   );
 }
