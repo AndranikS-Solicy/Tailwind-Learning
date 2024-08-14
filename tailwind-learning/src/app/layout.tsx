@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        {children}
+        <div className="container mx-auto px-0 mt-4">{children}</div>
       </body>
     </html>
   );

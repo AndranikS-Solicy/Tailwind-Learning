@@ -1,7 +1,7 @@
 import { cardInfo } from "../../utils/helpers/cardsFakeData";
 import Card from "./components/card";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <main className="p-10 flex flex-wrap justify-center gap-20">
       {cardInfo.map((card) => (
