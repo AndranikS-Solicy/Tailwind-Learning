@@ -4,6 +4,7 @@ import Link from "next/link";
 import ImageComponent from "./image";
 import Button from "./button";
 import MenuIcon from "./menuIcon";
+import HeaderItems from "./headerItems";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -67,36 +68,7 @@ const Header: React.FC = () => {
           menuOpen ? "absolute top-full left-0 right-0" : "hidden"
         } lg:static lg:flex lg:items-center lg:w-auto transition-transform transform-gpu duration-300 ease-out bg-blue z-10`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 lg:mt-0 w-full">
-          <Link
-            href="/"
-            className="text-center py-2"
-            onClick={handleMenuItemClick}
-          >
-            Home
-          </Link>
-          <Link
-            href="/blog"
-            className="text-center py-2"
-            onClick={handleMenuItemClick}
-          >
-            Blog
-          </Link>
-          <Link
-            href="/contact"
-            className="text-center py-2"
-            onClick={handleMenuItemClick}
-          >
-            Contact
-          </Link>
-          <Link
-            href="/about"
-            className="text-center py-2"
-            onClick={handleMenuItemClick}
-          >
-            About
-          </Link>
-        </div>
+          <HeaderItems />
       </div>
     </nav>
   );

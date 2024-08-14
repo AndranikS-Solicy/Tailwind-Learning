@@ -9,7 +9,7 @@ interface HeaderItem {
 
 const HeaderItems: React.FC = () => {
   return (
-    <div className="flex justify-center items-center space-x-20">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 lg:mt-0 w-full">
       {headerItems.map((item: HeaderItem) => (
         <Link href={item.url} key={item.pathName} passHref>
           {item.pathName}
