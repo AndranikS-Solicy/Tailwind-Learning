@@ -24,7 +24,7 @@ const ImageComponent: React.FC<ImageComponentProps> = ({
       className={className}
       loading="eager"
     />
-  );
+  );  
 };
 
 export default ImageComponent;

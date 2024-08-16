@@ -44,6 +44,16 @@ const config: Config = {
         nomad: "#BAB4AA",
         cararra: "rgba(226, 225, 222, 1)",
       },
+      spacing: {
+        "modal-padding": "1.5rem",
+        "button-padding": "0.5rem 1rem",
+      },
+      borderRadius: {
+        modal: "0.375rem",
+      },
+      boxShadow: {
+        modal: "0 4px 6px rgba(0, 0, 0, 0.1)",
+      },
     },
   },
   plugins: [],
