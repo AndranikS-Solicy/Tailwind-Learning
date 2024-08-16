@@ -1,14 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  newTitle: string;
-  setNewTitle: (title: string) => void;
-  newDescription: string;
-  setNewDescription: (description: string) => void;
-}
+import { ModalProps } from "../../../utils/helpers/modalPropTypes";
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,

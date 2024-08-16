@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axiosInstance from "../../../utils/axiosInstance";
+
 import Button from "../components/button";
 import Modal from "../components/customModal";
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from "../../../utils/helpers/postTypes";
+import {
+  addPost,
+  deletePost,
+  getPosts,
+  updatePost,
+} from "../../../utils/helpers/apiService";
 
 const AboutPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -19,10 +20,10 @@ const AboutPage: React.FC = () => {
   const [newDescription, setNewDescription] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-  const getPosts = async (): Promise<void> => {
+  const fetchPosts = async (): Promise<void> => {
     try {
-      const res = await axiosInstance.get<Post[]>("/posts?_limit=20");
-      setPosts(res.data);
+      const posts = await getPosts();
+      setPosts(posts);
     } catch (error) {
       console.error("Failed to fetch posts:", error);
     }
@@ -34,8 +35,8 @@ const AboutPage: React.FC = () => {
         title: editTitle,
         body: editDescription,
       };
-      const res = await axiosInstance.put<Post>(`/posts/${id}`, updatedPost);
-      setPosts(posts.map((post) => (post.id === id ? res.data : post)));
+      const post = await updatePost(id, updatedPost);
+      setPosts(posts.map((p) => (p.id === id ? post : p)));
       setEditMode(null);
     } catch (error) {
       console.error(`Failed to update post ${id}:`, error);
@@ -54,7 +55,7 @@ const AboutPage: React.FC = () => {
 
   const handleDelete = async (id: number): Promise<void> => {
     try {
-      await axiosInstance.delete(`/posts/${id}`);
+      await deletePost(id);
       setPosts(posts.filter((post) => post.id !== id));
     } catch (error) {
       console.error(`Failed to delete post ${id}:`, error);
@@ -68,8 +69,8 @@ const AboutPage: React.FC = () => {
         body: newDescription,
         userId: 1,
       };
-      const res = await axiosInstance.post<Post>("/posts", newPost);
-      setPosts([res.data, ...posts]);
+      const post = await addPost(newPost);
+      setPosts([post, ...posts]);
       setNewTitle("");
       setNewDescription("");
       setModalIsOpen(false);
@@ -79,7 +80,7 @@ const AboutPage: React.FC = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    fetchPosts();
   }, []);
 
   return (
